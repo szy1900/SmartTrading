@@ -288,7 +288,7 @@ if __name__ == '__main__':
     env = StockTradingEnv(df_train.copy(),env_target,features)
     # env = DummyVecEnv([lambda: env])
     policy_kwargs = dict(activation_fn=th.nn.ReLU,net_arch=[20,dict(pi=[20,20], vf=[20,20])])
-    model = A2C('MlpPolicy', env, verbose=1, n_steps=50, gamma=0.9, policy_kwargs=policy_kwargs,
+    model = A2C('MlpPolicy', env, verbose=1, n_steps=50, gamma=0.1, policy_kwargs=policy_kwargs,
                 tensorboard_log="a2c_tensorboard/")
     # # print(model.policy)
     model.learn(total_timesteps=50000,)
